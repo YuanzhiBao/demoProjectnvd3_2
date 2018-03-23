@@ -1,0 +1,25 @@
+{% load nvd3_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include_chart_jscss %}
+    {% load static %}
+    <link media="all" href="{% static 'nvd3/build/nv.d3.css' %}" \
+          type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{% static 'd3/d3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'nvd3/build/nv.d3.min.js' %}"></script>
+    <meta charset="UTF-8">
+    {% if date_tag %}
+        {% load_chart charttype chartdata "linechart_container" True "%d %b %Y %H" %}
+    {% else %}
+        {% load_chart charttype chartdata "linechart_container" %}
+    {% endif %}
+    <title>Title</title>
+</head>
+<body>
+
+    {% include_container "linechart_container" 400 600 %}
+
+</body>
+</html>
